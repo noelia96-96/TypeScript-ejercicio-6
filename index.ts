@@ -32,7 +32,6 @@ class Person{
     this.saySomething = func;
   }
 
-
   myNameIs():void{
     console.log(this.name);
   }
