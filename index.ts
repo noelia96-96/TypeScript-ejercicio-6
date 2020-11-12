@@ -23,10 +23,10 @@ class Person{
 
   private name: string;
   private age : number;
-  public saySomething : (string) => void; //propiedad que se le seteara un metodo, dentro tendra una funcion de typo function
+  public saySomething : (ARG0:string) => void; //propiedad que se le seteara un metodo, dentro tendra una funcion de typo function
   //buscar como darle el tipo a una funcion
 
-  constructor(name:string, age:number, func:(string)=>void){
+  constructor(name:string, age:number, func:(ARG0:string)=>void){
     this.name = name;
     this.age = age;
     this.saySomething = func;
@@ -34,20 +34,29 @@ class Person{
 
 
   myNameIs():void{
-    console.log(`Name:${this.name}`);
+    console.log(this.name);
   }
 
 }
 
+class Developer extends Person{
+  public bestLanguage:(ARG0: string)=>void;
 
+  constructor(name:string,age:number,saySomething:(ARG0:string) => void,bestLanguage:(ARG0: string)=>void ){
+    super(name, age, saySomething),
+    this.bestLanguage = bestLanguage;
+    
+  }
+ 
+}
 
-// const developer = new Developer(
-//   "pedro",
-//   35,
-//   something => console.log(something),
-//   language => console.log(language + " is the best language")
-// );
+const developer = new Developer(
+  "pedro",
+  35,
+  something => console.log(something),
+  language => console.log(language + " is the best language")
+);
 
-// developer.myNameIs();
-// developer.saySomething('algo');
-// developer.bestLanguage('Javascript');
+developer.myNameIs();
+developer.saySomething('algo');
+developer.bestLanguage('Javascript');
